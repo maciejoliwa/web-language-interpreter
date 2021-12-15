@@ -119,7 +119,7 @@ export const interpreterFactory = (tokens = []) => {
                         alert("You must put a NUMBER after IFLT instruction!");
                         return
                     }
-                    console.log(stack.peek())
+
                     if (stack.peek() < parseInt(toEqual2.literal)) {
                         currentPosition = parseInt(toJump2.literal) + 1
                         continue;

@@ -72,6 +72,15 @@ export const interpreterFactory = (tokens = []) => {
                     
                 break;
 
+                case TOKENS.POP:
+                    if (stack.isEmpty()) {
+                        alert("Nothing to pop out of the stack");
+                        return;
+                    } else {
+                        stack.pop();
+                    }
+                break;
+
                 case TOKENS.IFGT:
                     const toEqual1 = lookupNextToken();
 

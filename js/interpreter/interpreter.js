@@ -33,7 +33,8 @@ export const interpreterFactory = (tokens = []) => {
                     const nextToken = lookupNextToken();
                     
                     if (nextToken == undefined || nextToken.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after PUSH instruction!");
+                        alert("You must put a NUMBER after PUSH instruction!");
+                        return;
                     }
                     
                     stack.push(nextToken.literal);
@@ -41,7 +42,8 @@ export const interpreterFactory = (tokens = []) => {
 
                 case TOKENS.PRINT:
                     if (stack.isEmpty()) {
-                        throw new Error("Nothing to print on the stack");
+                        alert("Nothing to print on the stack, stack is empty");
+                        return;
                     }
 
                     writeToWebsite(stack.peek());
@@ -51,14 +53,16 @@ export const interpreterFactory = (tokens = []) => {
                     const toEqual = lookupNextToken();
 
                     if (toEqual == undefined || toEqual.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFEQ instruction!");
+                        return
                     }
 
                     currentPosition++;
                     const toJump = lookupNextToken();
 
                     if (toJump == undefined || toJump.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFEQ instruction!");
+                        return;
                     }
 
                     if (stack.peek() == parseInt(toEqual.literal)) {
@@ -72,14 +76,16 @@ export const interpreterFactory = (tokens = []) => {
                     const toEqual1 = lookupNextToken();
 
                     if (toEqual1 == undefined || toEqual1.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFGT instruction!");
+                        return;
                     }
 
                     currentPosition++;
                     const toJump1 = lookupNextToken();
 
                     if (toJump1 == undefined || toJump1.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFGT instruction!");
+                        return
                     }
                     
                     if (stack.peek() > parseInt(toEqual1.literal)) {
@@ -93,14 +99,16 @@ export const interpreterFactory = (tokens = []) => {
                     const toEqual2 = lookupNextToken();
 
                     if (toEqual2 == undefined || toEqual2.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFLT instruction!");
+                        return;
                     }
 
                     currentPosition++;
                     const toJump2 = lookupNextToken();
 
                     if (toJump2== undefined || toJump2.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after IFLT instruction!");
+                        return
                     }
                     console.log(stack.peek())
                     if (stack.peek() < parseInt(toEqual2.literal)) {
@@ -114,13 +122,15 @@ export const interpreterFactory = (tokens = []) => {
                     const jumpAddress = lookupNextToken();
                     
                     if (jumpAddress == undefined || jumpAddress.tokenType !== TOKENS.NUMBER) {
-                        throw new Error("You must put a NUMBER after JUMP instruction!");
+                        alert("You must put a NUMBER after JUMP instruction!");
+                        return;
                     }
 
                     currentPosition = parseInt(jumpAddress.literal) + 1;
 
                     if (jumpAddress.literal == token.position) {
-                        throw new Error("You can't jump to the same jump line!");
+                        alert("You can't jump to the same jump line!");
+                        return;
                     } 
 
                     continue;
@@ -134,7 +144,8 @@ export const interpreterFactory = (tokens = []) => {
 
                 case TOKENS.PRINTC:
                     if (stack.isEmpty()) {
-                        throw new Error("Nothing to print on the stack");
+                        alert("Nothing to print on the stack");
+                        return
                     }
 
                     writeToWebsite(String.fromCharCode(stack.peek()));

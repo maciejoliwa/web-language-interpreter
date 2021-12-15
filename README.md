@@ -5,6 +5,7 @@ https://web-interpreter.netlify.app/
 ## INSTRUCTIONS:
 * PUSH [n] - Push n number on the top of the stack
 * PRINT - Print whatever's on the top of the stack
+* POP - Pops whatever's on the top of the stack
 * PRINTC - Print whatever's on the top of the stack, but based on the number on the ASCII table
 * ADD - Add two numbers on the top of the stack, it pops these numbers and appends their sum to the top of the stack
 * IFEQ [n] [line] - IF number of the top of the stack is equal to n, move to line, otherwise continue

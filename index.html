@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Language</title>
+</head>
+<body class="bg-gray-600 h-screen">
+    <div class="wrapper flex flex-col justify-evenly h-screen md:px-24 items-center">
+
+        <div class="editor flex flex-col justify-evenly h-screen md:flex-row md:px-24 items-center w-full">
+            <textarea spellcheck="false" class='input rounded md:h-1/2  p-2 w-1/2' cols="30" rows="10"></textarea>
+            <button class='run text-white font-bold m-4 bg-blue-600 hover:bg-blue-500 px-8 py-2 rounded'>RUN</button>
+            <div class="output overflow-y-scroll rounded py-2 bg-gray-400 px-2 w-1/2 h-1/2">
+        </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>
